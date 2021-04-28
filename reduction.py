@@ -38,3 +38,4 @@ if __name__ == "__main__":
     print("Macierz zredukowana w kolejności kolumny-wiersze.\n")
     print(matrix_false)
     print("\nWartość fi: " + str(fi_false) + "\n")
+    
