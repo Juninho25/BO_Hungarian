@@ -10,7 +10,8 @@ def cross_out_zeros(matr: np.array, indep: List[Tuple[int, int]], dep: List[Tupl
     :param matr: Macierz kosztów
     :param indep: lista współrzędnych zer niezależnych
     :param dep: lista współrzędnych zer zależnych
-    :return:
+    :return: Funkcja zwraca słownik, w którym mamy listę
+            przekreślonych wierszy oraz kolumn
     """
     # Oznaczenie symbolem x danej kolumny lub
     # wiersza oznacza dodanie do listy x_rows lub x_cols
@@ -26,7 +27,6 @@ def cross_out_zeros(matr: np.array, indep: List[Tuple[int, int]], dep: List[Tupl
 
     make_loop = True
     while make_loop:
-
         # Oznaczenie symbolem x kolumn
         # mających zero zależne w oznaczonym wierszu.
         for i in x_rows:
@@ -52,3 +52,18 @@ def cross_out_zeros(matr: np.array, indep: List[Tuple[int, int]], dep: List[Tupl
                 make_loop = True
                 break
 
+    # Słownik crossed przechowuje listę przekreślonych
+    # wierszy oraz kolumn macierzy.
+    crossed = {"rows": [], "cols": []}
+
+    for i in range(matr.shape[0]):
+        if i not in x_rows:
+            # Przekreślenie nieoznakowanego wiersza
+            crossed["rows"].append(i)
+
+    for j in range(matr.shape[1]):
+        if j in x_cols:
+            # Przekreślenie oznakowanej kolumny
+            crossed["cols"].append(j)
+
+    return crossed
