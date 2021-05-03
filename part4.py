@@ -7,18 +7,18 @@ def find_new_zeros(matrix: np.ndarray, crossed: Dict):
     temp = float('inf')
 
     for i in range(size):
-        if i not in crossed["row"]:
+        if i not in crossed["rows"]:
             for j in range(size):
-                if j not in crossed["col"]:
+                if j not in crossed["cols"]:
                     if matrix[i][j] < temp:
                         temp = matrix[i][j]
 
     for i in range(size):
         for j in range(size):
-            if i not in crossed["row"] and j not in crossed["col"]:
+            if i not in crossed["rows"] and j not in crossed["cols"]:
                 matrix[i, j] -= temp
-            elif i in crossed["row"] and j in crossed["col"]:
+            elif i in crossed["rows"] and j in crossed["cols"]:
                 matrix[i, j] += temp
-
+    return temp
     #self.fi += temp
     #return wywołanie funkcji z kroku 2 z argumentem matrix

@@ -46,7 +46,7 @@ def find_indep_zeros(G):
                 if (i,k) not in indep:
                     dep.append((i,k))
         
-    print(indep,dep)
+    #print(indep,dep)
     return indep,dep
         
 
